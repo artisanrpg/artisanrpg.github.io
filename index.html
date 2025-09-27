@@ -2,9 +2,14 @@
 <html>
 
 <head>
-	<title>Artisan RPG</title>
-	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 	<meta charset="UTF-8">
+	<title>Artisan RPG</title>
+	<link rel="icon" type="image/png" sizes="16x16" href="Data/Icon/Icon16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="Data/Icon/Icon32.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="Data/Icon/Icon64.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="Data/Icon/Icon180.png">
+
+	
 	<!--meta content="Kenny Yip" name="author"-->
 	<!--meta content="width=device-width,initial-scale=1" name="viewport"-->
 	<!--link href="https://www.kennyyipcoding.com/images/kenny-icon.png" rel="image_src"-->
@@ -12,240 +17,638 @@
 	<!--link href="Kenny%20Yip%20Coding_files/all.css" rel="stylesheet" crossorigin="anonymous" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"><link href="Kenny%20Yip%20Coding_files/materialize.min.css" rel="stylesheet"-->
 	<!--link href="Kenny%20Yip%20Coding_files/style.css" rel="stylesheet"-->
 	<style>
-		:root {		--displayEN: inline;
-					--displayFR: none;
-					--displayJP: none;
+:root {		
+	--displayEN: inline;
+	--displayFR: none;
+	--displayJP: none;
+	
+	--displayXEN: flex;
+	--displayXFR: none;
+	--displayXJP: none;
 					
-					--displayHomePage:  block;
-					--displayVideoPage: none;
-					--displayShopPage:  none;  }
+					
+	--sortButtonAll:     flex;
+	--sortButtonFusion:  none;
+	--sortButtonCosplay: none;
+	--sortSeeOther:   flex;
+	--sortSeeFusion:  flex;
+	--sortSeeCosplay: flex;
+	--orderOldest: flex;
+	--orderLatest: none;
+					
+					
+	--buttonVideo:   0;
+	--buttonShop:    0;
+	--buttonEvent:   0;
+	--buttonContact: 0;
+					
+	--pageHome:    flex;
+					--pageVideo:   none;
+					--pageShop:    none;
+					--pageEvent:   none;
+					--pageContact: none;  }
+
+.EN {	display: var(--displayEN); }
+.FR {	display: var(--displayFR); }
+.JP {	display: var(--displayJP); }
+
+.XEN {	display: var(--displayXEN); }
+.XFR {	display: var(--displayXFR); }
+.XJP {	display: var(--displayXJP); font-family: "Noto Sans JP", sans-serif;  }
+
+html, body {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	overflow: hidden;
+	
+	/*margin: 0;*/
+	background-color: #115599;
+	/*background-image: url('AA.png');*/
+	/*background-size: cover;*/
+}
+
+button {
+	border-style: none;
+	outline: none;
+	background-color: transparent;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+}
+
+.TitleBox {
+	flex: 0 0 100px;
+	height: 100px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+  
+	/*background-color: #8888FF;*/
+}
+
+.TitleButton {
+	padding: 10px;
+	width:  100px;
+	height: 100px;
+
+	text-align: center;
+	font-size: 20px;
+	color: white;
+}
+
+.MenuBox {
+	flex: 0 0 32px;
+	height: 32px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	margin: 9px 0px;
+	background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.8) 15%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,0));			
+}
+
+.MenuButton {
+	width:  20%;
+	height: 32px;
+	color: white;
 			
-		.EN {	display: var(--displayEN); }
-		.FR {	display: var(--displayFR); }
-		.JP {	display: var(--displayJP); }
-		
-		.HomePage  {	display: var(--displayHomePage);  
-		font-family: verdana;
-		font-size: 100%;
-		text-align: center;
-		background-color: tomato;
-		}
-		.VideoPage {	display: var(--displayVideoPage); }
-		.ShopPage  {	display: var(--displayShopPage ); }
-		
-		
-		h1 {	text-align: center;
-				font-family: verdana;
-				font-size: 300%;
-				width: 100%;
-				background-color: powderblue; }
+	/*Bottom Line Orange*/
+	border-style: none none solid none; 
+	border-width: 4px;
+	border-image: linear-gradient(to right, transparent, orange 20%, yellow, orange 80%, transparent);
+}
 
-		
-		.MenuContainer {		display: flex;
-								flex-flow: row nowrap;
-								justify-content: space-evenly;
-								align-items: center;
-								/*text-align: center;*/
-								background-color: powderblue; }
 
+
+
+.FWN {  color: white; font-size: 16px; text-decoration: none; justify-content: center; align-items: center;  }
+.FWS {  color: white; font-size: 12px; text-decoration: none; justify-content: center; align-items: center;  }
+
+.FBN {  color: black; font-size: 16px; text-decoration: none; justify-content: center; align-items: center; font-family: Meiryo;  }
+
+
+
+/* All */
+.ASP {  flex: 0 0 auto; width: 800px; height: 50px;  }
+
+/* Home */
+.HPG {  display: var(--pageHome); flex: 1 1 auto; flex-flow: column nowrap; justify-content: flex-start; align-items: center; overflow-x: hidden; overflow-y: auto; scrollbar-width: none;  }
+.HSB {  background-image: url('Contact Line.png'); flex: 0 0 50px; position: relative; width: 800px; height: 50px;  }
+.HSL {  position: absolute; left: 40px; top: 5px; width: 200px; height: 40px; line-height: 40px; color: white; font-size: 16px; text-align: center;  }
+.HST {  position: absolute; left: 240px; top: 5px; width: 520px; height: 40px; line-height: 40px; border: none; padding: 0; outline: none; color: black; font-size: 16px; text-align: center;  }
+.HDB {  background-image: url('LineLabelDouble.png'); flex: 0 0 auto; position: relative; width: 800px; height: 80px;  }
+.HDL {  position: absolute; left:  40px; top: 10px; width: 200px; height: 30px; line-height: 30px; color: white; font-size: 16px; text-align: center;  }
+.HDU {  position: absolute; left: 240px; top: 10px; width: 520px; height: 30px; line-height: 30px; color: black; font-size: 16px; text-align: center;  }
+.HDD {  position: absolute; left:  40px; top: 40px; width: 720px; height: 30px; line-height: 30px; color: black; font-size: 16px; text-align: center;  }
+.HTB {  background-image: url('Home Head.png'); flex: 0 0 auto; position: relative; width: 800px; height: 100px;  }
+.HTU {  position: absolute; left: 100px; top:  5px; width: 600px; height: 50px; line-height: 50px; color: white; font-size: 36px; text-align: center;  }
+.HTD {  position: absolute; left: 100px; top: 55px; width: 600px; height: 40px; line-height: 40px; color: white; font-size: 22px; text-align: center;  }
+.HLS {  width: 800px; height: 50px; color: white; font-size: 16px; text-align: center;  }
+.HLB {  background-image: url('LineBlueLong.png'); flex: 0 0 50px; flex-flow: row nowrap; justify-content: center; width: 600px; height: 50px; line-height: 50px; color: white; font-size: 16px;  }
+
+/* Video */
+.VPG {  display: var(--pageVideo); flex: 1 1 auto; flex-flow: column nowrap; justify-content: start; overflow: hidden;  }
+.VSM {  display: flex; flex-flow: row nowrap; width: 100%; height: 50px; background-color: transparent;  }
+.VSP {  flex: 1 1 auto;  }
+.VSB {  background-image: url('Bar Number Unselect.png'); flex: 0 0 auto; width: 200px; height: 50px; position: relative;  }
+.VSA {  position: absolute; left:  20px; top: 5px; width: 40px; height: 40px;  }
+.VST {  position: absolute; left:  60px; top: 5px; width: 80px; height: 40px;  }
+.VSN {  position: absolute; right: 20px; top: 5px; width: 40px; height: 40px; display: flex;  }
+.VSO {  background-image: url('Bar Alone.png'); flex: 0 0 auto; width: 200px; height: 50px; position: relative;  }
+.VML {  display: flex; flex-flow: row wrap; justify-content: space-evenly; overflow-x: hidden; overflow-y: auto; scrollbar-color: #0088FF #222222; scrollbar-width: thin; background-color: transparent;  }
+.VMB {  background-image: url('Video Background.png'); width: 260px; height: 200px; flex: 0 0 auto; position: relative;  }
+.VMI {  position: absolute; left: 10px; top:  15px; width: 240px; height: 135px; border-radius: 15px; display: flex;  }
+.VMT { 	position: absolute; left:  5px; top: 150px; width: 250px; height:  40px;  }
+
+/* replace by detail */
+.sortOther   { display: var(--sortSeeOther);   }
+.sortFusion  { display: var(--sortSeeFusion);  }
+.sortCosplay { display: var(--sortSeeCosplay); }
+
+/* Shop */
+.SPG {  display: var(--pageShop); flex: 1 1 auto; flex-flow: column nowrap; justify-content: start; overflow: hidden;  }
+.SSM {  display: flex; flex-flow: row nowrap; width: 100%; height: 50px; background-color: transparent;  }
+.SSB {  background-image: url('Bar Number Unselect.png'); flex: 0 0 auto; width: 200px; height: 50px; position: relative;  }
+.SST {  position: absolute; left:  60px; top: 5px; width: 80px; height: 40px; color: white; font-size: 16px; text-decoration: none; justify-content: center; align-items: center; }
+.SSN {  position: absolute; right: 20px; top: 5px; width:  40px; height: 40px; display: flex; color: white; font-size: 12px; text-decoration: none; justify-content: center; align-items: center;  }
+.SSA {  position: absolute; left:   0px; top: 0px; width: 200px; height: 50px; display: flex; color: white; font-size: 16px; text-decoration: none; justify-content:  start; align-items: center; }
+.SMM {  display: flex; flex-flow: row wrap; justify-content: space-evenly; overflow-x: hidden; overflow-y: auto; scrollbar-color: #0088FF #222222; scrollbar-width: thin; background-color: transparent;  }
+.SMB {  background-image: url('Video Background.png'); width: 260px; height: 200px; flex: 0 0 auto; position: relative; cursor: pointer;  }
+.SMI {  position: absolute; left: 10px; top:  15px; width: 240px; height: 135px; border-radius: 15px; display: flex;  }
+.SMT { 	position: absolute; left:  5px; top: 150px; width: 250px; height:  40px; color: white; font-size: 16px; justify-content: center; align-items: center; text-decoration: none; }
+.SMX { 	background-color: rgba(0, 0, 255, 0.75); position: absolute; left: 20px; top:  35px; width: 220px; height:  40px; border-radius: 10px; color: white; font-size: 16px; justify-content: center; align-items: center; text-decoration: none; }
+.SMY { 	background-color: rgba(0, 0, 255, 0.75); position: absolute; left: 20px; top:  90px; width: 220px; height:  40px; border-radius: 10px; color: white; font-size: 16px; justify-content: center; align-items: center; text-decoration: none; }
+
+/* Event */
+.EPG {  display: var(--pageEvent); flex: 1 1 auto; flex-flow: column nowrap; justify-content: flex-start; align-items: center; overflow-x: hidden; overflow-y: auto; scrollbar-width: none;  }
+
+.EDT {  width: 680px; 
+	margin: 7px 50px;
+	/*border: 2px solid black;*/
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.75);
+ }
+
+
+details > summary::marker {  content: "";  } /* remove list marker on modern browser */
+.ESB {  background-image: url('Contact Line.png'); flex: 0 0 auto; position: relative; width: 800px; height: 50px; list-style: none;  }
+.ESL {  position: absolute; left:  40px; top: 5px; width: 200px; height: 40px; /*display: Flex; */ }
+.EST {  position: absolute; left: 240px; top: 5px; width: 520px; height: 40px; /*display: Flex;*/  }
+
+/* Contact */
+.CPG {  display: var(--pageContact); flex: 1 1 auto; flex-flow: column nowrap; justify-content: start; align-items: center; overflow-x: hidden; overflow-y: auto; scrollbar-width: none;  }
+.CFB {  flex: 0 0 auto; flex-flow: column nowrap; justify-content: center; align-items: center;  }
+.CFS {  background-image: url('Contact Submit.png'); flex: 0 0 auto; width:  600px; height: 50px; color: white; font-size: 16px; justify-content: center; align-items: center; text-decoration: none;  }
+.CLB {  background-image: url('Contact Line.png'); flex: 0 0 auto; position: relative; width: 800px; height: 50px;  }
+.CLL {  position: absolute; left: 40px; top: 5px; width: 200px; height: 40px; line-height: 40px; color: white; font-size: 16px; text-align: center;  }
+.CLI {  position: absolute; left: 240px; top: 5px; width: 520px; height: 40px; line-height: 40px; border: none; padding: 0; outline: none; color: black; font-size: 16px; text-align: center; background-color: transparent;  }
+.CMB {  background-image: url('Contact Message.png'); flex: 0 0 auto; position: relative; width: 800px; height: 200px;  }
+.CMI {  position: absolute; left: 100px; top: 20px; width: 600px; height: 160px; resize: none; border: none; padding: 0; outline: none; margin: 0px; color: black; font-size: 16px; background-color: transparent;  }
+
+
+
+
+
+.footer {
+  flex: 0 1 40px;
   
-		.MenuButton {			border: none;
-								outline: none;
-								width: 20%;
-								height: 40px;
-								background-color: #f1f1f1;
-								cursor: pointer; }
-  
-  
-.container {
-  overflow: hidden;
+  background-color: grey;
 }
-
-.filterDiv {
-  float: left;
-  background-color: #2196F3;
-  color: #ffffff;
-  width: 100px;
-  line-height: 100px;
-  text-align: center;
-  margin: 2px;
-  display: none; /* Hidden by default */
-}
-
-/* The "show" class is added to the filtered elements */
-.show {
-  display: block;
-}
-
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
-
-/* Add a light grey background on mouse-over */
-.btn:hover {
-  background-color: #ddd;
-}
-
-/* Add a dark background to the active button */
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-				
-				
 	</style>
 </head>
 
-<body>
+<body class="Body">
 
-	<!-- main image -->
-	<h1>Artisan RPG</h1>
-
-
-	
-	<br>
-
-<!-- LANGUAGE -->
-	<div id="myBtnContainer">
-	  <button class="btn active" onclick="inEnglish()" >English</button>
-	  <button class="btn"        onclick="inFrench()"  >French</button>
-	  <button class="btn"        onclick="inJapanese()">Japanese</button>
+<!-- Title -->
+	<div class="TitleBox">
+		<!-- Home -->
+		<button class="TitleButton" onclick="toHomePage()"><img src="Home (W80).png" alt="Home"></button>
+		
+		<!--div style="width: 540px; background-color: green;">Artisan RPG</div-->
+		<img src="Title (W100).png" alt="Artisan">
+		
+		<!-- Language -->
+		<button class="EN TitleButton" onclick="inJapanese()"><img src="Data/Title/EN (W80).png" alt="English" ></button>
+		<button class="FR TitleButton" onclick="inEnglish()" ><img src="Data/Title/FR (W80).png" alt="French"  ></button>
+		<button class="JP TitleButton" onclick="inFrench()"  ><img src="Data/Title/JP (W80).png" alt="Japanese"></button>
 	</div>
-	
-	<br>
-	<br>
-
+  
 <!-- Menu -->
-	<div Class="MenuContainer">
-	  <button class="MenuButton" onclick="toVideoPage()"> <span class="EN">Videos</span>  <span class="FR">Vidéos</span>         <span class="JP">動画</span>      </button>
-	  <button class="MenuButton" onclick="toShopPage()" > <span class="EN">Shop</span>    <span class="FR">Boutique</span>       <span class="JP">ストア</span>      </button>
-	  <!--button class="MenuButton" onclick="">Tourism</button-->
-	  <!--button class="MenuButton" onclick=""> <span class="EN">Posts</span> <span class="FR">Posts</span> <span class="JP">投稿</span> </button-->
-	  <button class="MenuButton" onclick=""> <span class="EN">Contact</span> <span class="FR">Nous Contacter</span> <span class="JP">お問い合わせ</span> </button>
-	  <button class="MenuButton" onclick=""> <span class="EN">About Us</span> <span class="FR">Nous Contacter</span> <span class="JP">お問い合わせ</span> </button>
+	<div Class="MenuBox">
+		<button class="EN MenuButton" onclick="toVideoPage()" style="border-image-slice: var(--buttonVideo)">Videos</button>
+		<button class="FR MenuButton" onclick="toVideoPage()" style="border-image-slice: var(--buttonVideo)">Vidéos</button>
+		<button class="JP MenuButton" onclick="toVideoPage()" style="border-image-slice: var(--buttonVideo)">動画</button>
+		<img class="MenuSpacer" src="spacer.png" alt="/">
+		<button class="EN MenuButton" onclick="toShopPage()" style="border-image-slice: var(--buttonShop)">Shop</button>
+		<button class="FR MenuButton" onclick="toShopPage()" style="border-image-slice: var(--buttonShop)">Boutique</button>
+		<button class="JP MenuButton" onclick="toShopPage()" style="border-image-slice: var(--buttonShop)">ストア</button>
+		<img class="MenuSpacer" src="spacer.png" alt="/">
+		<button class="EN MenuButton" onclick="toEventPage()" style="border-image-slice: var(--buttonEvent)">Events</button>
+		<button class="FR MenuButton" onclick="toEventPage()" style="border-image-slice: var(--buttonEvent)">Événements</button>
+		<button class="JP MenuButton" onclick="toEventPage()" style="border-image-slice: var(--buttonEvent)">イベント</button>
+		<img class="MenuSpacer" src="spacer.png" alt="/">
+		<button class="EN MenuButton" onclick="toContactPage()" style="border-image-slice: var(--buttonContact)">Contact</button>
+		<button class="FR MenuButton" onclick="toContactPage()" style="border-image-slice: var(--buttonContact)">Nous Contacter</button>
+		<button class="JP MenuButton" onclick="toContactPage()" style="border-image-slice: var(--buttonContact)">お問い合わせ</button>
+	</div>
+
+<!-- Page Home -->
+	<div class="HPG">
+		<div class="ASP"></div>
+		<div class="XEN HTB"><div class="HTU">R&nbsp;o&nbsp;b&nbsp;o&nbsp;t&nbsp;i&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;a&nbsp;d&nbsp;g&nbsp;e&nbsp;t&nbsp;s</div><div class="HTD">Accessible&nbsp;&nbsp;to&nbsp;&nbsp;anyone&nbsp;&nbsp;with&nbsp;&nbsp;Creativity&nbsp;&nbsp;!</div></div>
+		<div class="XFR HTB"><div class="HTU">G&nbsp;a&nbsp;d&nbsp;g&nbsp;e&nbsp;t&nbsp;s&nbsp;&nbsp;&nbsp;&nbsp;R&nbsp;o&nbsp;b&nbsp;o&nbsp;t&nbsp;i&nbsp;q&nbsp;u&nbsp;e&nbsp;s</div><div class="HTD">Accessibles&nbsp;&nbsp;à&nbsp;&nbsp;toutes&nbsp;&nbsp;les&nbsp;&nbsp;personnes&nbsp;&nbsp;créatives&nbsp;&nbsp;!</div></div>
+		<div class="XJP HTB"><div class="HTU">ロ&nbsp;ボ&nbsp;ッ&nbsp;ト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ガ&nbsp;ジ&nbsp;ェ&nbsp;ッ&nbsp;ト</div><div class="HTD">創&nbsp;造&nbsp;力&nbsp;の&nbsp;あ&nbsp;る&nbsp;皆&nbsp;様&nbsp;よ&nbsp;う&nbsp;こ&nbsp;そ&nbsp;！</div></div>
+		<div class="ASP"></div>
+		<div class="XEN HDB"><div class="HDL">Gadgets</div><div class="HDU">With our plug-and-play components, even amateurs can easily</div><div class="HDD">upgrade their creations with stunning robotics effects. Perfect for DIY, Cosplay, Animatronics...</div></div>
+		<div class="XFR HDB"><div class="HDL">Gadgets</div><div class="HDU">Intégrer la robotique à vos projets devient un jeu d'enfant !</div><div class="HDD">Nos accessoires prêts à l'emploi sont parfaits pour des projets de Bricolage, Cosplay, Animatronique...</div></div>
+		<div class="XJP HDB"><div class="HDL">ガジェット</div><div class="HDU">当社の製品は「つないで使うだけ」でOK！</div><div class="HDD">普段のDIYやコスプレ、アニマトロニクスのクオリティを一段階引き上げます。</div></div>
+		<div class="XEN HDB"><div class="HDL">Custom-Made</div><div class="HDU">Our assistance can make things even easier for you,</div><div class="HDD">since you can request us a custom-made robotic system by using our contact form.</div></div>
+		<div class="XFR HDB"><div class="HDL">Sur Mesure</div><div class="HDU">Si vous avez un projet en tête, contactez-nous !</div><div class="HDD">Nous serons ravis de vous fournir un système robotique complet entièrement personnalisé.</div></div>
+		<div class="XJP HDB"><div class="HDL">カスタムメード</div><div class="HDU">私たちのサポートにより作業がさらに簡単になります。</div><div class="HDD">カスタムロボットシステムのご要望は、お問い合わせください。</div></div>
+		<div class="XEN HDB"><div class="HDL">YouTube</div><div class="HDU">You can also follow us on our Youtube channel !</div><div class="HDD">Our videos combine craft techniques and Japanese culture with a good dose of humor.</div></div>
+		<div class="XFR HDB"><div class="HDL">YouTube</div><div class="HDU">Vous pouvez également nous suivre sur YouTube !</div><div class="HDD">Nos vidéos allient techniques artisanales et culture japonaise avec une bonne dose d'humour.</div></div>
+		<div class="XJP HDB"><div class="HDL">YouTube</div><div class="HDU">当社の YouTube チャンネルでは、</div><div class="HDD">さまざまな楽しいクラフトやコスプレのビデオもご覧いただけます。</div></div>
+		<div class="XEN HDB"><div class="HDL">Tourism</div><div class="HDU">For those who plan to visit Tokyo, we also offer</div><div class="HDD">special guided tours that focus on both traditional and futuristic Japanese unique crafts.</div></div>
+		<div class="XFR HDB"><div class="HDL">Tourisme</div><div class="HDU">Pour ceux qui envisagent de faire un tour à Tokyo,</div><div class="HDD">Nous proposons également des visites guidées spécialement axées sur l'artisanat japonais.</div></div>
+		<div class="XJP HDB"><div class="HDL">カスタムメード</div><div class="HDU">東京にお越しのお客様には、</div><div class="HDD">日本の伝統工芸に焦点を当てた特別ガイドツアーもご用意しております。</div></div>
+		<div class="ASP"></div>
+		<img class="HLS" src="Line Spacer.png" alt="----------" >
+		<div class="XEN HLB"><b>Company Profile</b></div>
+		<div class="XFR HLB"><b>Profil de la Société</b></div>
+		<div class="XJP HLB">会&nbsp;社&nbsp;概&nbsp;要</div>
+		<div class="XEN HSB"><div class="HSL">Company Name</div><div class="HST">Artisan RPG&nbsp;&nbsp;&nbsp;&nbsp;LLC</div></div>
+		<div class="XFR HSB"><div class="HSL">Entreprise</div><div class="HST">Artisan RPG&nbsp;&nbsp;&nbsp;&nbsp;SARL</div></div>
+		<div class="XJP HSB"><div class="HSL">会&nbsp;社&nbsp;名</div><div class="HST">アーティザン アールピージー&nbsp;&nbsp;&nbsp;&nbsp;合同会社</div></div>
+		<div class="XEN HSB"><div class="HSL">CEO</div><div class="HST">SHIMIZU Nozomi</div></div>
+		<div class="XFR HSB"><div class="HSL">PDG</div><div class="HST">SHIMIZU Nozomi</div></div>
+		<div class="XJP HSB"><div class="HSL">代表者</div><div class="HST">清水&nbsp;&nbsp;希</div></div>
+		<div class="XEN HSB"><div class="HSL">Co-Founders</div><div class="HST">HARDY Martial</div></div>
+		<div class="XFR HSB"><div class="HSL">Co-Fondateurs</div><div class="HST">HARDY Martial</div></div>
+		<div class="XJP HSB"><div class="HSL">共同創設者</div><div class="HST">ハーディ&nbsp;&nbsp;マーシャル</div></div>
+		<div class="XEN HSB"><div class="HSL">Head Office</div><div class="HST">Tokyo, Suginami Ward, Narita Higashi 4-34-13, Duo Scala Asagaya 502</div></div>
+		<div class="XFR HSB"><div class="HSL">Head Office</div><div class="HST">Tokyo, Suginami arr., Narita Higashi 4-34-13, Duo Scala Asagaya 502</div></div>
+		<div class="XJP HSB"><div class="HSL">拠&nbsp;&nbsp;点</div><div class="HST">東京&nbsp;都杉並区&nbsp;成田東&nbsp;4-34-13&nbsp;デュオ・スカーラ阿佐ヶ谷&nbsp;502</div></div>
+		<div class="XEN HSB"><div class="HSL">Founding</div><div class="HST">October&nbsp;&nbsp;2025</div></div>
+		<div class="XFR HSB"><div class="HSL">Création</div><div class="HST">Octobre&nbsp;&nbsp;2025</div></div>
+		<div class="XJP HSB"><div class="HSL">創&nbsp;&nbsp;業</div><div class="HST">2025年&nbsp;&nbsp;9月</div></div>
+		<div class="XEN HSB"><div class="HSL">Capital</div><div class="HST">2 Million JPY</div></div>
+		<div class="XFR HSB"><div class="HSL">Capital</div><div class="HST">2 Million JPY</div></div>
+		<div class="XJP HSB"><div class="HSL">資&nbsp;本&nbsp;金</div><div class="HST">2&nbsp;百万&nbsp;円</div></div>
+		<div class="ASP"></div>
+	</div>
+
+<!-- Page Video -->
+	<div class="VPG">
+	<!-- Video Sort Menu -->
+		<div class="VSM">
+			<button class="VSB" onclick="sortAll()">
+				<img class="VSA FWN" style="display: var(--sortButtonAll)" src="Arrow.png" alt=">">
+				<div class="XEN VST FWN">All</div>
+				<div class="XFR VST FWN">Tout</div>
+				<div class="XJP VST FWN">すべて</div>
+				<div class="VSN FWS">9</div>
+			</button>
+			<button class="VSB" onclick="sortFusion()">
+				<img class="VSA" style="display: var(--sortButtonFusion)" src="Arrow.png" alt=">">
+				<div class="XEN VST FWN">Fusion</div>
+				<div class="XFR VST FWN">Fusion</div>
+				<div class="XJP VST FWN">合成の壺</div>
+				<div class="VSN FWS">5</div>
+			</button>
+			<button class="VSB" onclick="sortCosplay()">
+				<img class="VSA" style="display: var(--sortButtonCosplay)" src="Arrow.png" alt=">">
+				<div class="XEN VST FWN">Cosplay</div>
+				<div class="XFR VST FWN">Cosplay</div>
+				<div class="XJP VST FWN">コスプレ</div>
+				<div class="VSN FWS">3</div>
+			</button>
+		  
+			<div class="VSP"></div>
+
+			<button class="VSO FWN" style="display: var(--orderOldest);" onclick="orderVideoLatest()">
+				<div class="XEN VST FWN">Oldest</div>
+				<div class="XFR VST FWN">+Ancien</div>
+				<div class="XJP VST FWN">古い順</div>
+			</button>
+			<button class="VSO FWN" style="display: var(--orderLatest);" onclick="orderVideoOldest()">
+				<div class="XEN VST FWN">Latest</div>
+				<div class="XFR VST FWN">+Récent</div>
+				<div class="XJP VST FWN">新しい順</div>
+			</button>
+		</div>
+		
+		
+		
+	<!-- video List -->
+		<div class="VML">
+	
+			<a style="order: 1" class="sortFusion VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail fusion.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 1 en</div>
+				<div class="XFR VMT FWN">video 1 fr</div>
+				<div class="XJP VMT FWN">video 1 jp</div>
+			</a>
+		
+			<a style="order: 2" class="sortFusion VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail fusion.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 2 en</div>
+				<div class="XFR VMT FWN">video 2 fr</div>
+				<div class="XJP VMT FWN">video 2 jp</div>
+			</a>
+		
+			<a style="order: 3" class="sortCosplay VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail cosplay.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 3 en</div>
+				<div class="XFR VMT FWN">video 3 fr</div>
+				<div class="XJP VMT FWN">video 3 jp</div>
+			</a>
+			
+			<a style="order: 4" class="sortFusion VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail fusion.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 4 en</div>
+				<div class="XFR VMT FWN">video 4 fr</div>
+				<div class="XJP VMT FWN">video 4 jp</div>
+			</a>
+		
+			<a style="order: 5" class="sortCosplay VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail cosplay.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 5 en</div>
+				<div class="XFR VMT FWN">video 5 fr</div>
+				<div class="XJP VMT FWN">video 5 jp</div>
+			</a>
+			
+			<a style="order: 6" class="sortOther VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 6 en</div>
+				<div class="XFR VMT FWN">video 6 fr</div>
+				<div class="XJP VMT FWN">video 6 jp</div>
+			</a>
+		
+			<a style="order: 7" class="sortFusion VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail fusion.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 7 en</div>
+				<div class="XFR VMT FWN">video 7 fr</div>
+				<div class="XJP VMT FWN">video 7 jp</div>
+			</a>
+		
+			<a style="order: 8" class="sortFusion VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail fusion.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 8 en</div>
+				<div class="XFR VMT FWN">video 8 fr</div>
+				<div class="XJP VMT FWN">video 8 jp</div>
+			</a>
+		
+			<a style="order: 9" class="sortCosplay VMB" href="https://www.youtube.com/@ArtisanRPG" target="_blank">
+				<img class="VMI FWN" src="thumbnail cosplay.png" alt="thumbnail error">
+				<div class="XEN VMT FWN">video 9 en</div>
+				<div class="XFR VMT FWN">video 9 fr</div>
+				<div class="XJP VMT FWN">video 9 jp</div>
+			</a>
+		
+		
+	<!-- add new video her -->
+		
+		</div>
+		
 	</div>
 	
-	<br>
-	<br>
-
-	<!-- Home Tab -->
-	<div class="HomePage">
-		<span>About us</span>
-		<br>
-		<span>...</span>
-	</div> 
-
-	<!-- Video Tab -->
-	<div class="VideoPage">
-		<!-- Video Filters Buttons -->
-		<div id="myBtnContainer">
-		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-		  <button class="btn"        onclick="filterSelection('cars')"> Cars</button>
-		  <button class="btn"        onclick="filterSelection('animals')"> Animals</button>
-		  <button class="btn"        onclick="filterSelection('fruits')"> Fruits</button>
-		  <button class="btn"        onclick="filterSelection('colors')"> Colors</button>
+	
+<!-- Page Shop -->
+	<div class="SPG">
+	<!-- Shop Sort Menu -->
+		<div class="SSM">
+			<button class="SSB" onclick="sortShopAll()"><details name="ShopMenuAccordion" open><summary>
+				<div class="XEN SST">All</div>
+				<div class="XFR SST">Tout</div>
+				<div class="XJP SST">すべて</div>
+				<div class="SSN">5</div>
+			</summary><img class="SSA" src="Arrow2.png" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>"></details></button>
+			
+			<button class="SSB" onclick="sortShopGadget()"><details name="ShopMenuAccordion"><summary>
+				<div class="XEN SST">Gadgets</div>
+				<div class="XFR SST">Gadgets</div>
+				<div class="XJP SST">ガジェット</div>
+				<div class="SSN">2</div>
+			</summary><img class="SSA" src="Arrow2.png" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>"></details></button>
+			
+			<button class="SSB" onclick="sortShopMisc()"><details name="ShopMenuAccordion"><summary>
+				<div class="XEN SST">Misc.</div>
+				<div class="XFR SST">Autre</div>
+				<div class="XJP SST">その他</div>
+				<div class="SSN">2</div>
+			</summary><img class="SSA" src="Arrow2.png" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>"></details></button>
 		</div>
-
-		<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-		<div class="container">
-		  <div class="filterDiv cars">BMW</div>
-		  <div class="filterDiv colors fruits">Orange</div>
-		  <div class="filterDiv cars">Volvo</div>
-		  <div class="filterDiv colors">Red</div>
-		  <div class="filterDiv cars">Ford</div>
-		  <div class="filterDiv colors">Blue</div>
-		  <div class="filterDiv animals">Cat</div>
-		  <div class="filterDiv animals">Dog</div>
-		  <div class="filterDiv fruits">Melon</div>
-		  <div class="filterDiv fruits animals">Kiwi</div>
-		  <div class="filterDiv fruits">Banana</div>
-		  <div class="filterDiv fruits">Lemon</div>
-		  <div class="filterDiv animals"><span class="EN">Cow</span><span class="FR">Vache</span></div>
-		</div> 
 		
+
+	<!-- shop List -->
+		<div class="SMM">
+	
+			<details class="sortOth SMB" name="ShopItemAccordion">
+				<summary>
+					<img class="SMI" src="thumbnail led.png" alt="thumbnail error">
+					<div class="XEN SMT">led en</div>
+					<div class="XFR SMT">led fr</div>
+					<div class="XJP SMT">led jp</div>
+				</summary>
+				<a class="XEN SMX" href="https://www.amazon.com" target="_blank">Buy on Amazon</a>
+				<a class="XFR SMX" href="https://www.amazon.com" target="_blank">Acheter sur Amazon</a>
+				<a class="XJP SMX" href="https://www.amazon.com" target="_blank">Amazon で購入する</a>
+				<a class="XEN SMY" href="https://www.rakuten.co.jp/" target="_blank">Buy on Rakuten</a>
+				<a class="XFR SMY" href="https://www.rakuten.co.jp/" target="_blank">Acheter sur Rakuten</a>
+				<a class="XJP SMY" href="https://www.rakuten.co.jp/" target="_blank">楽天市場で購入する</a>
+			</details>
 		
-	</div> 
+			<details class="sortMis SMB" name="ShopItemAccordion">
+				<summary>
+					<img class="SMI" src="thumbnail bag.png" alt="thumbnail error">
+					<div class="XEN SMT">bag en</div>
+					<div class="XFR SMT">bag fr</div>
+					<div class="XJP SMT">bag jp</div>
+				</summary>
+				<a class="XEN SMX" href="https://www.amazon.com" target="_blank">Buy on Amazon</a><a class="XFR SMX" href="https://www.amazon.com" target="_blank">Acheter sur Amazon</a><a class="XJP SMX" href="https://www.amazon.com" target="_blank">Amazon で購入する</a>
+				<a class="XEN SMY" href="https://www.rakuten.co.jp/" target="_blank">Buy on Rakuten</a><a class="XFR SMY" href="https://www.rakuten.co.jp/" target="_blank">Acheter sur Rakuten</a><a class="XJP SMY" href="https://www.rakuten.co.jp/" target="_blank">楽天市場で購入する</a>
+			</details>
+		
+			<details class="sortGad SMB" name="ShopItemAccordion">
+				<summary>
+					<img class="SMI" src="thumbnail elec.png" alt="thumbnail error">
+					<div class="XEN SMT">gadget en</div>
+					<div class="XFR SMT">gadget fr</div>
+					<div class="XJP SMT">gadget jp</div>
+				</summary>
+				<a class="XEN SMX" href="https://www.amazon.com" target="_blank">Buy on Amazon</a><a class="XFR SMX" href="https://www.amazon.com" target="_blank">Acheter sur Amazon</a><a class="XJP SMX" href="https://www.amazon.com" target="_blank">Amazon で購入する</a>
+				<a class="XEN SMY" href="https://www.rakuten.co.jp/" target="_blank">Buy on Rakuten</a><a class="XFR SMY" href="https://www.rakuten.co.jp/" target="_blank">Acheter sur Rakuten</a><a class="XJP SMY" href="https://www.rakuten.co.jp/" target="_blank">楽天市場で購入する</a>
+			</details>
+			
+			<details class="sortMis SMB" name="ShopItemAccordion">
+				<summary>
+					<img class="SMI" src="thumbnail bag.png" alt="thumbnail error">
+					<div class="XEN SMT">bag 2 en</div>
+					<div class="XFR SMT">bag 2 fr</div>
+					<div class="XJP SMT">bag 2 jp</div>
+				</summary>
+				<a class="XEN SMX" href="https://www.amazon.com" target="_blank">Buy on Amazon</a><a class="XFR SMX" href="https://www.amazon.com" target="_blank">Acheter sur Amazon</a><a class="XJP SMX" href="https://www.amazon.com" target="_blank">Amazon で購入する</a>
+				<a class="XEN SMY" href="https://www.rakuten.co.jp/" target="_blank">Buy on Rakuten</a><a class="XFR SMY" href="https://www.rakuten.co.jp/" target="_blank">Acheter sur Rakuten</a><a class="XJP SMY" href="https://www.rakuten.co.jp/" target="_blank">楽天市場で購入する</a>
+			</details>
+		
+			<details class="sortGad SMB" name="ShopItemAccordion">
+				<summary>
+					<img class="SMI" src="thumbnail elec.png" alt="thumbnail error">
+					<div class="XEN SMT">gadget 2 en</div>
+					<div class="XFR SMT">gadget 2 fr</div>
+					<div class="XJP SMT">gadget 2 jp</div>
+				</summary>
+				<a class="XEN SMX" href="https://www.amazon.com" target="_blank">Buy on Amazon</a><a class="XFR SMX" href="https://www.amazon.com" target="_blank">Acheter sur Amazon</a><a class="XJP SMX" href="https://www.amazon.com" target="_blank">Amazon で購入する</a>
+				<a class="XEN SMY" href="https://www.rakuten.co.jp/" target="_blank">Buy on Rakuten</a><a class="XFR SMY" href="https://www.rakuten.co.jp/" target="_blank">Acheter sur Rakuten</a><a class="XJP SMY" href="https://www.rakuten.co.jp/" target="_blank">楽天市場で購入する</a>
+			</details>
 
-	<!-- Shop Tab -->
-	<div class="ShopPage">
-		<span>under construction...</span>
-	</div> 
-	
-	
+	<!-- add new item here -->
+		
+		</div>
+		
+	</div>
 
-	<!--script src="Kenny%20Yip%20Coding_files/materialize.min.js"></script-->
+<!-- Page Event -->
+	<div class="EPG">
+		<div class="ASP"></div>
+		
+	<!-- Event List New -->
+		<details name="EventAccordion">
+			<summary class="ESB">
+				<div class="XEN ESL FWN">Event</div><div class="XFR ESL FWN">Événements</div><div class="XJP ESL FWN">イベント</div>
+				<div class="XEN EST FBN">Workshop Party on Nov. 202x</div>
+				<div class="XFR EST FBN">Atelier Party de Nov. 202x</div>
+				<div class="XJP EST FBN">202x年11月のワークショップパーティー</div>
+			</summary>
+			<div class="XEN EDT">Our next Workshop party will be held in November, the topic will be xxxx. To join please register <b>here</b></div>
+			<div class="XFR EDT">description en francais...</div>
+			<div class="XJP EDT">次回のワークショップパーティーは 11 月に開催され、トピックは xxxx になります。 参加するには<b>こちら</b>から登録してください</div>
+		</details>
+		
+		<details name="EventAccordion">
+			<summary class="ESB">
+				<div class="XEN ESL FWN">News</div><div class="XFR ESL FWN">Information</div><div class="XJP ESL FWN">ニュース</div>
+				<div class="XEN EST FBN">Site under maintenance</div>
+				<div class="XFR EST FBN">Maintenance du site web</div>
+				<div class="XJP EST FBN">ウェブサイトはメンテナンス中ですx</div>
+			</summary>
+			<div class="XEN EDT">We are sorry to inform you that the site will go under maintenance until xxx.</div>
+			<div class="XFR EDT">description en francais...</div>
+			<div class="XJP EDT">誠に申し訳ございませんが、xxx までサイトはメンテナンス中となります。</div>
+		</details>
+		
+		<details name="EventAccordion">
+			<summary class="ESB">
+				<div class="XEN ESL FWN">News</div><div class="XFR ESL FWN">Information</div><div class="XJP ESL FWN">ニュース</div>
+				<div class="XEN EST FBN">The Website is Online !</div>
+				<div class="XFR EST FBN">Le Site est en ligne !</div>
+				<div class="XJP EST FBN">ウェブサイト は オンライン ！</div>
+			</summary>
+			<div class="XEN EDT">Starting Today xxxx 2025, the artisanrpg.com if officially online !</div>
+			<div class="XFR EDT">le site internet artisanrpg.com est officiellement en ligne à partir d'aujourd'hui !</div>
+			<div class="XJP EDT">本日 xxxx 2025 より、artisanrpg.com が正式にオンラインになります!</div>
+		</details>
 	
-	
-	
-	<p>Hardy © 2025</p>
-	
+	<!-- Event List Old -->
+		<div class="ASP"></div>
+	</div>
+
+<!-- Page Contact -->
+	<div class="CPG">
+		<div class="ASP"></div>
+		<form class="XEN CFB" action="https://api.web3forms.com/submit" method="post" autocomplete="off">
+			<input type="hidden" name="access_key" value="21585c93-56fe-4f8e-bab2-3afe375168d5">
+			<input type="checkbox" name="botcheck" style="display: none;">
+			<div class="CLB"><label class="CLL" for="idName">Your Name</label><input class="CLI" type="text" placeholder="Name Required" name="Name" id="idName" required></div>
+			<div class="CLB"><label class="CLL" for="idEmail">Your Email</label><input class="CLI" type="email" placeholder="Email Required" name="Email" id="idEmail" required></div>
+			<div class="CLB"><label class="CLL" for="idMessage">Your Message</label><input class="CLI" type="text" placeholder="Subject" name="Title" id="idTitle"></div>
+			<div class="CMB"><textarea class="CMI" placeholder="Message Required" name="Message" id="idMessage" maxlength="1000" required></textarea></div>
+			<button class="CFS" type="submit">Submit</button>
+		</form>
+		<form class="XFR CFB" action="https://api.web3forms.com/submit" method="post" autocomplete="off">
+			<input type="hidden" name="access_key" value="21585c93-56fe-4f8e-bab2-3afe375168d5">
+			<input type="checkbox" name="botcheck" style="display: none;">
+			<div class="CLB"><label class="CLL" for="idName">Votre Nom</label><input class="CLI" type="text" placeholder="Nom Requis" name="Name" id="idName" required></div>
+			<div class="CLB"><label class="CLL" for="idEmail">Votre Courriel</label><input class="CLI" type="email" placeholder="Courriel Requis" name="Email" id="idEmail" required></div>
+			<div class="CLB"><label class="CLL" for="idMessage">Votre Message</label><input class="CLI" type="text" placeholder="Objet" name="Title" id="idTitle"></div>
+			<div class="CMB"><textarea class="CMI" placeholder="Message Requis" name="Message" id="idMessage" maxlength="1000" required></textarea></div>
+			<button class="CFS" type="submit">Envoyer</button>
+		</form>
+		<form class="XJP CFB" action="https://api.web3forms.com/submit" method="post" autocomplete="off">
+			<input type="hidden" name="access_key" value="21585c93-56fe-4f8e-bab2-3afe375168d5">
+			<input type="checkbox" name="botcheck" style="display: none;">
+			<div class="CLB"><label class="CLL" for="idName">お名前</label><input class="CLI" type="text" placeholder="お名前 (必須)" name="Name" id="idName" required></div>
+			<div class="CLB"><label class="CLL" for="idEmail">メールアドレス</label><input class="CLI" type="email" placeholder="メールアドレス (必須)" name="Email" id="idEmail" required></div>
+			<div class="CLB"><label class="CLL" for="idMessage">メッセージ</label><input class="CLI" type="text" placeholder="題 名" name="Title" id="idTitle"></div>
+			<div class="CMB"><textarea class="CMI" placeholder="メッセージ本文 (必須)" name="Message" id="idMessage" maxlength="1000" required></textarea></div>
+			<button class="CFS" type="submit">送&nbsp;&nbsp;&nbsp;&nbsp;信</button>
+		</form>
+		<div class="ASP"></div>
+	</div>
+  
+  
+  <!--div class="footer">©2025 Artisan RPG 株式会社</div-->
+
+
 <script>
-	function inEnglish()   {  document.documentElement.style.setProperty("--displayEN", "inline");  document.documentElement.style.setProperty("--displayFR", "none");  document.documentElement.style.setProperty("--displayJP", "none");  }
-	function inFrench()    {  document.documentElement.style.setProperty("--displayFR", "inline");  document.documentElement.style.setProperty("--displayJP", "none");  document.documentElement.style.setProperty("--displayEN", "none");  }
-	function inJapanese()  {  document.documentElement.style.setProperty("--displayJP", "inline");  document.documentElement.style.setProperty("--displayEN", "none");  document.documentElement.style.setProperty("--displayFR", "none");  }
-
-	function toVideoPage() {  document.documentElement.style.setProperty("--displayVideoPage", "block");  document.documentElement.style.setProperty("--displayHomePage" , "none");  document.documentElement.style.setProperty("--displayShopPage" , "none");  }
-	function toShopPage()  {  document.documentElement.style.setProperty("--displayShopPage" , "block");  document.documentElement.style.setProperty("--displayHomePage" , "none");  document.documentElement.style.setProperty("--displayVideoPage", "none");  }
+	function inEnglish()   {  css("--displayXEN", "flex");  css("--displayXFR", "none");  css("--displayXJP", "none"); css("--displayEN", "inline");  css("--displayFR", "none");  css("--displayJP", "none");  }
+	function inFrench()    {  css("--displayXEN", "none");  css("--displayXFR", "flex");  css("--displayXJP", "none"); css("--displayFR", "inline");  css("--displayJP", "none");  css("--displayEN", "none");  }
+	function inJapanese()  {  css("--displayXEN", "none");  css("--displayXFR", "none");  css("--displayXJP", "flex"); css("--displayJP", "inline");  css("--displayEN", "none");  css("--displayFR", "none");  }
 	
-	//hide other pages...
+	function toHomePage()    {  css("--buttonVideo", "0"); css("--buttonShop", "0"); css("--buttonEvent", "0"); css("--buttonContact", "0"); css("--pageHome", "flex"); css("--pageVideo", "none"); css("--pageShop", "none"); css("--pageEvent", "none"); css("--pageContact", "none");  }
+	function toVideoPage()   {  css("--buttonVideo", "1"); css("--buttonShop", "0"); css("--buttonEvent", "0"); css("--buttonContact", "0"); css("--pageHome", "none"); css("--pageVideo", "flex"); css("--pageShop", "none"); css("--pageEvent", "none"); css("--pageContact", "none");  }
+	function toShopPage()    {  css("--buttonVideo", "0"); css("--buttonShop", "1"); css("--buttonEvent", "0"); css("--buttonContact", "0"); css("--pageHome", "none"); css("--pageVideo", "none"); css("--pageShop", "flex"); css("--pageEvent", "none"); css("--pageContact", "none");  }
+	function toEventPage()   {  css("--buttonVideo", "0"); css("--buttonShop", "0"); css("--buttonEvent", "1"); css("--buttonContact", "0"); css("--pageHome", "none"); css("--pageVideo", "none"); css("--pageShop", "none"); css("--pageEvent", "flex"); css("--pageContact", "none");  }
+	function toContactPage() {  css("--buttonVideo", "0"); css("--buttonShop", "0"); css("--buttonEvent", "0"); css("--buttonContact", "1"); css("--pageHome", "none"); css("--pageVideo", "none"); css("--pageShop", "none"); css("--pageEvent", "none"); css("--pageContact", "flex");  }
+
+	function sortAll()     {  css("--sortButtonAll", "flex"); css("--sortButtonFusion", "none"); css("--sortButtonCosplay", "none"); css("--sortSeeOther", "flex"); css("--sortSeeFusion", "flex"); css("--sortSeeCosplay", "flex");  }
+	function sortFusion()  {  css("--sortButtonAll", "none"); css("--sortButtonFusion", "flex"); css("--sortButtonCosplay", "none"); css("--sortSeeOther", "none"); css("--sortSeeFusion", "flex"); css("--sortSeeCosplay", "none");  }
+	function sortCosplay() {  css("--sortButtonAll", "none"); css("--sortButtonFusion", "none"); css("--sortButtonCosplay", "flex"); css("--sortSeeOther", "none"); css("--sortSeeFusion", "none"); css("--sortSeeCosplay", "flex");  }
+
+	function sortShopAll()     {  ShowClass("sortGad"); ShowClass("sortMis"); ShowClass("sortOth");  }
+	function sortShopGadget()  {  ShowClass("sortGad"); HideClass("sortMis"); HideClass("sortOth");  }
+	function sortShopMisc()    {  HideClass("sortGad"); ShowClass("sortMis"); HideClass("sortOth");  }
+
+	function orderVideoOldest()   {  css("--orderOldest", "flex"); css("--orderLatest", "none"); videoOrderToggle();  }
+	function orderVideoLatest()   {  css("--orderOldest", "none"); css("--orderLatest", "flex"); videoOrderToggle();  }
 
 
-
-
-	filterSelection("all")
-	function filterSelection(c)
+	//shorter
+	function css(name, value) { document.documentElement.style.setProperty(name, value); }
+	
+	function HideClass(name)
 	{
-	  var x, i;
-	  x = document.getElementsByClassName("filterDiv");
-	  if (c == "all") c = "";
-	  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-	  for (i = 0; i < x.length; i++) {
-		w3RemoveClass(x[i], "show");
-		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-	  }
+		const List = document.getElementsByClassName(name);
+		for (let i = 0; i < List.length; i++) { List[i].style.setProperty('display', 'none' ); }
 	}
+	
+	function ShowClass(name)
+	{
+		const List = document.getElementsByClassName(name);
+		for (let i = 0; i < List.length; i++) { List[i].style.setProperty('display', 'block' ); }
+	}
+	
+	function videoOrderToggle()
+	{	// invert the order :  order a <-> order -a
+		const videoBoxList = document.getElementsByClassName('VMB');
+		for (let i = 0; i < videoBoxList.length; i++) { videoBoxList[i].style.setProperty('order',  -videoBoxList[i].style.order ); }
+	}
+	
+	window.onload = function() 
+	{	// reset form after reload
+		const ContactFormList = document.getElementsByClassName('CFB');
+		for (let i = 0; i < ContactFormList.length; i++) { ContactFormList[i].reset(); }
+	}
+	
 
-// Show filtered elements
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += " " + arr2[i];
-    }
-  }
-}
-
-// Hide elements that are not selected
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(" ");
-}
-
-// Add active class to the current control button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
+	
 </script>
+
+		
+
+
 
 </body>
 
